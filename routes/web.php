@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,4 +46,9 @@ Route::middleware([
     Route::get('/api/tmdb', [ApiController::class, 'tmdb'])->name('api.tmdb');
     Route::get('/api/giantbomb', [ApiController::class, 'giantbomb'])->name('api.giantbomb');
     Route::get('/api/openlib', [ApiController::class, 'openlib'])->name('api.openlib');
+
+    Route::get('logout', function() {
+        auth()->guard('web')->logout();
+        return redirect('/');
+    })->name('logout');
 });

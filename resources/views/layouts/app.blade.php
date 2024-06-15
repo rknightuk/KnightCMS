@@ -64,6 +64,11 @@
                     <li><i class="fad fa-folders"></i> <a href="/files">Files</a></li>
                 </ul>
 
+                <hr class="my-10 border-stone-600">
+                <ul>
+                    <li><i class="fad fa-sign-out"></i> <a href="/logout">Logout</a></li>
+                </ul>
+
             </div>
         </div>
 
