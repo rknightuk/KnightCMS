@@ -178,7 +178,7 @@ small screens.
 */
 .menu-link {
     position: fixed;
-    bottom: 10px;
+    bottom: 30px;
     left: 10px;
     z-index: 10;
     display: flex;
