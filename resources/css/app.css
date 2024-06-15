@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+body {
+    @apply bg-stone-900 text-lg;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-weight: normal;
+    color: #fef1d4!important;
+}
+
+.content a {
+    @apply text-pink-500 hover:text-pink-600;
+}
+
+input {
+    color-scheme: dark;
+    @apply text-white;
+}
+
+#home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.button,
+a.button {
+    @apply text-xs bg-pink-500 hover:bg-pink-600 text-white font-semibold uppercase tracking-widest py-2 px-4 rounded
+}
+
+a.button {
+    @apply py-2.5;
+}
+
+.input-button {
+    @apply bg-pink-500 hover:bg-pink-600 text-white font-semibold uppercase tracking-widest;
+}
+
+.box {
+    @apply bg-stone-800 border border-stone-700;
+}
+
+.kcms-menu {
+    @apply tracking-widest lowercase;
+}
+
+.kcms-menu h1 {
+    @apply font-bold my-2;
+}
+
+.kcms-menu ul {
+    @apply ml-2;
+}
+
+.kcms-menu li {
+    @apply py-1;
+}
+
+.kcms-menu li a {
+    @apply hover:text-pink-500;
+}
+
+.kcms-menu i {
+    width: 20px;
+    text-align: center;
+    @apply text-white mr-1;
+}
+
+.article-success {
+    @apply border-l border-green-400 dark:border-green-300 p-4 mb-4 text-sm text-stone-800 bg-stone-50 dark:bg-stone-800 dark:text-stone-200;
+}
+
+.article-error {
+    @apply border-l border-red-400 dark:border-red-300 p-4 mb-4 text-sm text-stone-800 bg-stone-50 dark:bg-stone-800 dark:text-stone-200;
+}
+
+.dashboard-buttons {
+    @apply grid grid-cols-2 gap-3;
+}
+
+.dashboard-buttons .dbutton {
+    @apply flex flex-col text-center items-center text-white hover:text-stone-800 text-sm uppercase tracking-widest border border-pink-600 p-5 rounded-xl;
+}
+
+.dashboard-buttons .dbutton i {
+    @apply text-2xl mb-2;
+}
+
+
+/* menu shit */
+
+.content {
+    /* border: 1px solid white; */
+    margin: 0 auto;
+    max-width: 1000px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+    /* margin-left: 5px; */
+    @apply mt-6;
+}
+
+.header {
+    @apply py-8 px-3 bg-stone-800 text-center text-sm font-mono;
+}
+
+/* The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+
+#menu {
+    margin-left: -300px; /* "#menu" width */
+    width: 300px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    overflow-y: auto;
+    @apply bg-stone-800 p-5;
+}
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    left: 0;
+    padding-left: 0;
+}
+    #layout.active #menu {
+        position: absolute;
+        left: 300px;
+        bottom: 0;
+        height: 100vh;
+        z-index: 100;
+        border-right: 1px solid #4d4741;
+    }
+
+    #layout.active .menu-link {
+        left: 310px;
+    }
+/*
+The content `<div>` is where all your content goes.
+*/
+
+/*
+
+/* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+/*
+The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works:
+*/
+
+/*
+`.menu-link` represents the responsive menu toggle that shows/hides on
+small screens.
+*/
+.menu-link {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}
+
+    .menu-link:hover,
+    .menu-link:focus {
+        @apply text-pink-500;
+    }
+
+    .menu-link span {
+        position: relative;
+        display: block;
+    }
+
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 48em) {
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #layout {
+        padding-left: 300px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: 300px;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: 300px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        left: 310px;
+    }
+}
+
+@media (max-width: 48em) {
+    #layout.active {
+        position: relative;
+    }
+}
+
+.invalid-form-input {
+    @apply border !border-red-500;
+}
