@@ -17,13 +17,15 @@
     @endforeach
 
     @if ($contents)
-        <div id="container" class="w-full" style="height: 500px;"></div>
-
         <form id="form" method="post" action="/file/{{ $contents['sha'] }}">
             @csrf
             @method('PUT')
             <input type="hidden" name="path" value="{{ $contents['path'] }}" />
-            <input type="hidden" name="contents" />
+            <textarea
+                id="contents"
+                class="border-stone-300 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-300 focus:border-stone-500 dark:focus:border-stone-600 focus:ring-stone-500 dark:focus:ring-stone-600 rounded-md shadow-sm w-full font-mono"
+                name="contents"
+                rows="30">{{ $contents['decoded'] }}</textarea>
         </form>
 
         <div class="mt-3 flex justify-between">
@@ -38,31 +40,10 @@
         </div>
 
         <script>
-            var require = { paths: { vs: '/assets/monaco/vs' } };
-        </script>
-        <script src="/assets/monaco/vs/loader.js"></script>
-        <script src="/assets/monaco/vs/editor/editor.main.nls.js"></script>
-        <script src="/assets/monaco/vs/editor/editor.main.js"></script>
-
-        <script>
-            const contents = {!! json_encode($contents['decoded']) !!};
-            const editor = monaco.editor.create(document.getElementById('container'), {
-                value: contents,
-                language: '{{ $language }}',
-                theme: 'vs-dark',
-                minimap: { enabled: false },
-                scrollbar: { vertical: 'hidden', horizontal: 'hidden' },
-                wordWrap: 'on',
-                fontSize: 16,
-                scrollBeyondLastLine: false,
-                lineNumbers: 'off',
-            });
-
             const form = document.getElementById('form')
 
             document.getElementById('save').addEventListener('click', (e) => {
                 e.preventDefault()
-                form.contents.value = editor.getValue()
 
                 form.submit()
             })

@@ -225,7 +225,8 @@
         @endif
 
         <x-label for="date" value="Content" />
-        <div id="container" class="w-full mt-3 border border-stone-700" style="height: 500px;"></div>
+
+        <textarea id="content" class="border-stone-300 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-300 focus:border-stone-500 dark:focus:border-stone-600 focus:ring-stone-500 dark:focus:ring-stone-600 rounded-md shadow-sm w-full" name="content" rows="20"></textarea>
 
         <div class="mt-3 flex justify-between">
             <x-button id="preview">
@@ -237,15 +238,7 @@
         </div>
 
         <input type="hidden" name="type" value="{{ $type }}" />
-        <input type="hidden" name="contents" />
     </form>
-
-    <script>
-        var require = { paths: { vs: '/assets/monaco/vs' } };
-    </script>
-    <script src="/assets/monaco/vs/loader.js"></script>
-    <script src="/assets/monaco/vs/editor/editor.main.nls.js"></script>
-    <script src="/assets/monaco/vs/editor/editor.main.js"></script>
 
     <script>
         const fetchLinkData = async () => {
@@ -273,18 +266,6 @@
             linkFetch.setAttribute('disabled', false)
         }
 
-        const editor = monaco.editor.create(document.getElementById('container'), {
-            value: '',
-            language: 'markdown',
-            theme: 'vs-dark',
-            minimap: { enabled: false },
-            scrollbar: { vertical: 'hidden', horizontal: 'hidden' },
-            wordWrap: 'on',
-            fontSize: 16,
-            scrollBeyondLastLine: false,
-            lineNumbers: 'off',
-        });
-
         const form = document.getElementById('form')
 
         document.querySelectorAll('.tag').forEach(tag => {
@@ -297,18 +278,6 @@
 
                 form.tags.value = tags.join(',')
             })
-        })
-
-        document.getElementById('save').addEventListener('click', (e) => {
-            e.preventDefault()
-            form.contents.value = editor.getValue()
-
-            highlightInvalidInputs(form)
-
-            if (form.checkValidity())
-            {
-                form.submit()
-            }
         })
 
         document.getElementById('preview').addEventListener('click', async (e) => {
