@@ -282,7 +282,7 @@
 
         document.getElementById('preview').addEventListener('click', async (e) => {
             e.preventDefault()
-            const contents = editor.getValue()
+            const contents = document.getElementById('contents').value
 
             const formToObject = f => Object.fromEntries(new FormData(f))
             const formData = formToObject(form)

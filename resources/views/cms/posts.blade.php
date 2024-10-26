@@ -50,7 +50,7 @@
 
             document.getElementById('preview').addEventListener('click', async (e) => {
                 e.preventDefault()
-                const contents = editor.getValue()
+                const contents = document.getElementById('contents').value
 
                 const res = await fetch('/preview', {
                     method: 'POST',
