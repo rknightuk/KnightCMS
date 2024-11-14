@@ -43,7 +43,13 @@ class BlogConfig extends PostConfig {
 
         return [
             $content,
-            'src/posts/' . $this->permalinkPrefix() . '/' . $year . '/' . $data['permalink'] . '.md',
+            sprintf(
+                'src/posts/%s/%s/%s-%s.md',
+                $this->permalinkPrefix(),
+                $year,
+                $this->formatDateForPermalink($data['date']),
+                $data['permalink']
+            )
         ];
     }
 

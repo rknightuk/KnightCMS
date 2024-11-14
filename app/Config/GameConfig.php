@@ -44,7 +44,7 @@ class GameConfig extends PostConfig {
 
     public function makeFromData(array $data): array
     {
-        $permalinkDate = (new Carbon($data['date']))->format('Y-m-d');
+        $permalinkDate = $this->formatDateForPermalink($data['date']);
 
         $frontMatter = [
             'title' => $data['title'],

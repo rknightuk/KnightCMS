@@ -8,7 +8,7 @@ class MovieConfig extends PostConfig {
 
     public function makeFromData(array $data): array
     {
-        $permalinkDate = (new Carbon($data['date']))->format('Y-m-d');
+        $permalinkDate = $this->formatDateForPermalink($data['date']);
 
         $frontMatter = [
             'title' => $data['title'],
@@ -39,7 +39,13 @@ class MovieConfig extends PostConfig {
 
         return [
             $content,
-            'src/posts/' . $this->permalinkPrefix() . '/' . $year . '/' . $permalinkDate . '-' . $data['permalink'] . '.md',
+            sprintf(
+                'src/posts/%s/%s/%s-%s.md',
+                $this->permalinkPrefix(),
+                $year,
+                $this->formatDateForPermalink($data['date']),
+                $data['permalink']
+            )
         ];
     }
 

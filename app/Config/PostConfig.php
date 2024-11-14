@@ -111,6 +111,11 @@ abstract class PostConfig {
         return (new Carbon($date))->format('Y-m-d\TH:i:s.000\Z');
     }
 
+    public function formatDateForPermalink(string $date): string
+    {
+        return (new Carbon($date))->format('Y-m-d');
+    }
+
     public function isBook(): bool
     {
         return false;

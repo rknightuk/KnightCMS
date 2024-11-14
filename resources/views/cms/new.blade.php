@@ -140,7 +140,7 @@
                 @if ($config->isTV())
                         <div>
                             <x-label for="season" value="Season" />
-                            <x-input id="season" class="block mt-1 w-full" type="text" name="season" required />
+                            <x-input id="season" class="block mt-1 w-full" type="text" name="season" />
                         </div>
                 @endif
             </div>
