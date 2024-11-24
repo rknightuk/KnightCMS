@@ -8,7 +8,7 @@ class NoteConfig extends PostConfig {
 
     public function makeFromData(array $data): array
     {
-        $permalinkDate = (new Carbon($data['date']))->format('Ymdhi');
+        $permalinkDate = (new Carbon($data['date']))->format('YmdHi');
         $frontMatter = [
             'permalink' => '/' . $this->permalinkPrefix() . '/' . $permalinkDate . '/index.html',
             'date' => $this->formatDate($data['date']),
