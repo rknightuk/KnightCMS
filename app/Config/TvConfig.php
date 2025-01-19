@@ -25,6 +25,9 @@ class TvConfig extends PostConfig {
         $frontMatter = array_filter($frontMatter);
 
         $frontMatter = implode("\n", \array_map(function ($key, $value) {
+            if (\in_array($key, ['title'])) {
+                return $key . ': "' . $value . '"';
+            }
             return $key . ': ' . $value;
         }, \array_keys($frontMatter), \array_values($frontMatter)));
 

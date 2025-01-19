@@ -35,10 +35,9 @@
         @foreach($data->slice(0, 12) as $file)
             <div
                 class="flex justify-center items-center aspect-square border border-stone-700 overflow-hidden cursor-pointer hover:border-pink-700"
-                data-copy="{{ $cdnUrl }}{{ $file['ObjectName'] }}"
             >
                 @if (str_contains($file['ObjectName'], '.jpg') || str_contains($file['ObjectName'], '.jpeg') || str_contains($file['ObjectName'], '.png'))
-                    <img src="{{ $cdnUrl }}{{ $file['ObjectName'] }}">
+                    <img src="{{ $cdnUrl }}{{ $file['ObjectName'] }}" data-copy="{{ $cdnUrl }}{{ $file['ObjectName'] }}">
                 @else
                     <span
                         class="block font-mono text-sm hover:cursor-pointer hover:text-pink-500 text-wrap"
@@ -51,7 +50,7 @@
         @endforeach
     </div>
 
-    @foreach($data->slice(12, 38) as $file)
+    @foreach($data as $file)
             <span
                 class="flex items-center justify-between box p-3 font-mono text-sm hover:cursor-pointer hover:text-pink-500"
                 href="#"

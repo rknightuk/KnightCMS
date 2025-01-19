@@ -23,6 +23,9 @@ class MovieConfig extends PostConfig {
         if ($data['custom_backdrop']) $frontMatter['customBackdrop'] = $data['custom_backdrop'];
 
         $frontMatter =  implode("\n", \array_map(function ($key, $value) {
+            if (\in_array($key, ['title'])) {
+                return $key . ': "' . $value . '"';
+            }
             return $key . ': ' . $value;
         }, \array_keys($frontMatter), \array_values($frontMatter)));
 
