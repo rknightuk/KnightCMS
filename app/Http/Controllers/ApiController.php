@@ -119,7 +119,7 @@ class ApiController extends Controller
 
     public function uploadFile()
     {
-        $path = \request('path', 'site');
+        $path = \request('path', 'site/2025');
 
         $adapter = new BunnyCDNAdapter(
             new BunnyCDNClient(
@@ -148,7 +148,7 @@ class ApiController extends Controller
 
     public function listFiles()
     {
-        $path = \request('path', 'site');
+        $path = \request('path', 'site/2025');
 
         $cacheKey = 'files-' . $path;
 
