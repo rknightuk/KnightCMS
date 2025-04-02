@@ -14,6 +14,10 @@ class NoteConfig extends PostConfig {
             'date' => $this->formatDate($data['date']),
         ];
 
+        if ($data['tags'] ?? false) {
+            $frontMatter['tags'] = sprintf('[%s]', $data['tags']);
+        }
+
         $frontMatter =  implode("\n", \array_map(function ($key, $value) {
             return $key . ': ' . $value;
         }, \array_keys($frontMatter), \array_values($frontMatter)));
@@ -62,7 +66,7 @@ class NoteConfig extends PostConfig {
 
     public function hasTags(): bool
     {
-        return false;
+        return true;
     }
 
     public function hasProject(): bool
