@@ -14,6 +14,7 @@
         "league/commonmark": "^2.4",
         "livewire/livewire": "^3.0",
         "platformcommunity/flysystem-bunnycdn": "*",
+        "spatie/laravel-image-optimizer": "^1.8",
         "spatie/temporary-directory": "^2.2",
         "spatie/yaml-front-matter": "^2.0",
         "symfony/yaml": "^7.1"

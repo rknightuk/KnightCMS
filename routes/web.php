@@ -45,7 +45,9 @@ Route::middleware([
     Route::delete('/next/{id}', [MediaController::class, 'delete'])->name('next.delete');
 
     Route::get('/api/link', [ApiController::class, 'link'])->name('api.link');
-    Route::post('/api/file', [ApiController::class, 'uploadFile'])->name('api.file');
+    Route::post('/api/file', [ApiController::class, 'uploadFile'])->name('api.file')
+        ->middleware(\Spatie\LaravelImageOptimizer\Middlewares\OptimizeImages::class);
+
     Route::get('/api/tmdb', [ApiController::class, 'tmdb'])->name('api.tmdb');
     Route::get('/api/giantbomb', [ApiController::class, 'giantbomb'])->name('api.giantbomb');
     Route::get('/api/openlib', [ApiController::class, 'openlib'])->name('api.openlib');
