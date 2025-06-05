@@ -6,6 +6,8 @@
     <form id="form" method="post" action="/new">
         @csrf
 
+        <p><small>Week {{ (int) floor((new Carbon\Carbon('1988-01-09'))->diffInWeeks(Carbon\Carbon::now())); }}</small></p>
+
         @if ($config->hasTmdbSearch())
             <x-label for="tmdbsearch" value="Search" />
             <div class="items-center flex">
